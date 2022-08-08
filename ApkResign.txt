@@ -1,0 +1,67 @@
+反编译解压
+apktool.bat d -o outDir sgws_1.0.12_103_19_RELEASE.apk
+
+修改版本号versionCode
+apktool.yml文件中修改
+
+编译成apk(nosign):
+apktool.bat b -o sgws_1.0.12_103_19_RELEASE_no_signalign.apk outDir
+
+检查是否对齐
+D:\Android\SDK\build-tools\25.0.2\zipalign -c -v 4 sgws_1.0.12_103_19_RELEASE_no_signalign.apk
+此命令执行完成后可以看到 Verification FAILED，表示没有对齐。
+
+
+对齐：
+D:\Android\SDK\build-tools\25.0.2\zipalign -v 4 sgws_1.0.12_103_19_RELEASE_no_signalign.apk sgws_1.0.12_103_19_RELEASE_align.apk
+
+
+再检查是否对齐
+D:\Android\SDK\build-tools\25.0.2\zipalign -c -v 4 sgws_1.0.12_103_19_RELEASE_align.apk
+Verification succesful
+可以进行下一步
+
+
+v1 v2签名：
+D:\Android\SDK\build-tools\25.0.2\apksigner sign --ks=D:\AAB\tronghv.keystore --ks-pass=pass:123456 --ks-key-alias=tronghv --key-pass=pass:123456 --out sgws_1.0.12_103_18_RELEASE.apk sgws_1.0.12_103_19_RELEASE_align.apk
+
+
+验证是否成功
+D:\Android\SDK\build-tools\25.0.2\apksigner verify -v sgws_1.0.12_103_18_RELEASE.apk
+这个命令可以看是什么签名
+D:\Android\SDK\build-tools\25.0.2\apksigner verify -v sgws_1.0.12_103_19_RELEASE.apk
+
+----------------------------------------------------------
+
+反编译解压
+apktool.bat d -o outDir sgws_1.0.12_260_30_RELEASE.apk
+
+修改版本号versionCode
+apktool.yml文件中修改
+
+编译成apk(nosign):
+apktool.bat b -o sgws_1.0.12_260_30_RELEASE_no_signalign.apk outDir
+
+检查是否对齐
+D:\Android\SDK\build-tools\25.0.2\zipalign -c -v 4 sgws_1.0.12_260_30_RELEASE_no_signalign.apk
+此命令执行完成后可以看到 Verification FAILED，表示没有对齐。
+
+
+对齐：
+D:\Android\SDK\build-tools\25.0.2\zipalign -v 4 sgws_1.0.12_260_30_RELEASE_no_signalign.apk sgws_1.0.12_260_30_RELEASE_align.apk
+
+
+再检查是否对齐
+D:\Android\SDK\build-tools\25.0.2\zipalign -c -v 4 sgws_1.0.12_260_30_RELEASE_align.apk
+Verification succesful
+可以进行下一步
+
+
+v1 v2签名：
+D:\Android\SDK\build-tools\25.0.2\apksigner sign --ks=D:\AAB\tronghv.keystore --ks-pass=pass:123456 --ks-key-alias=tronghv --key-pass=pass:123456 --out sgws_1.0.12_260_29_RELEASE.apk sgws_1.0.12_260_30_RELEASE_align.apk
+
+
+验证是否成功
+D:\Android\SDK\build-tools\25.0.2\apksigner verify -v sgws_1.0.12_260_29_RELEASE.apk
+这个命令可以看是什么签名
+D:\Android\SDK\build-tools\25.0.2\apksigner verify -v sgws_1.0.12_260_30_RELEASE.apk
